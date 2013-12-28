@@ -11,7 +11,16 @@ class LooksController < ApplicationController
   end
 
   def create
-    fail
+    @look = Look.new(params[:look])
+    
+    @look.user_id = 1
+    @look.url = @look.url || 'fasdfs'
+    
+    if @look.save
+      redirect_to look_url(@look)
+    else
+      fail
+    end
   end
 
   def show

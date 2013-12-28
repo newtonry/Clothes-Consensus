@@ -9,6 +9,18 @@ gem 'sqlite3'
 # Devise for authentication
 gem 'devise'
 
+# For file uploads
+gem 'carrierwave'
+
+#Carrierwave uses fog to upload files to S3
+gem 'fog'
+
+# Processing images
+gem 'rmagick'
+
+#attr_accessible
+gem 'protected_attributes', '1.0.5'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
