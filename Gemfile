@@ -18,6 +18,9 @@ gem 'fog'
 # Processing images
 gem 'rmagick'
 
+# Keeps env variables private
+gem 'figaro'
+
 #attr_accessible
 gem 'protected_attributes', '1.0.5'
 

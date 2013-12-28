@@ -6,6 +6,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
+  include CarrierWave::MimeTypes
+  process :set_content_type
+
   # Choose what kind of storage to use for this uploader:
   # storage :file
   storage :fog
@@ -20,7 +23,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
   #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  #
+  # 
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
