@@ -8,10 +8,13 @@ class User < ActiveRecord::Base
   has_many :looks
   
   def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |user|
+    User.where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      # user.username = auth.info.nickname #leaving this out for now, can have usernames later if needed
+      user.username = auth.info.nickname
+      
+      user.email = auth.info.email if auth.info.email
+      user.gender = auth.info.gender if auth.info.gender
     end
   end
 
