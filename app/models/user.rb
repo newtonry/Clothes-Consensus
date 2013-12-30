@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
-  
+  attr_accessible :voted_looks
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  
   has_many :looks
+  has_many :votes
+  has_many :voted_looks, through: :votes, source: :look
   
   def self.from_omniauth(auth)
     User.where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -36,6 +38,4 @@ class User < ActiveRecord::Base
   def email_required?
     super && provider.blank?
   end
-
-
 end
