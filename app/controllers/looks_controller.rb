@@ -7,13 +7,14 @@ class LooksController < ApplicationController
   def new
     @look = Look.new
     render :new
-    
   end
 
   def create
     @look = Look.new(params[:look])
     
-    @look.user_id = 1
+    fail
+    
+    @look.user_id = current_user.id
     @look.url = @look.url || 'fasdfs'
     
     if @look.save
