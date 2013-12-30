@@ -8,6 +8,7 @@ gem 'sqlite3'
 
 # Devise for authentication
 gem 'devise'
+gem 'omniauth-twitter'
 
 # For file uploads
 gem 'carrierwave'
